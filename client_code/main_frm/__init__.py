@@ -1,8 +1,8 @@
-from ._anvil_designer import Form1Template
+from ._anvil_designer import main_frmTemplate
 from anvil import *
 
 
-class Form1(Form1Template):
+class main_frm(main_frmTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)

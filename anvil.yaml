@@ -1,7 +1,7 @@
 allow_embedding: false
-package_name: M3_App_1
-name: M3 App 1
-startup_form: Form1
+package_name: Question_bank
+name: Question_bank
+startup_form: null
 renamed: true
 runtime_options:
   version: 2
@@ -9,4 +9,9 @@ runtime_options:
   server_version: python3-sandbox
   server_spec: {base: python310-standard}
 dependencies: []
-services: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+metadata: {title: My question bank, description: Create and display a bank of questions}
+startup: {type: form, module: main_frm}
