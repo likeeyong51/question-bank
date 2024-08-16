@@ -15,3 +15,15 @@ services:
   server_config: {}
 metadata: {title: My question bank, description: Create and display a bank of questions}
 startup: {type: form, module: main_frm}
+db_schema:
+  question_tbl:
+    client: none
+    server: full
+    columns:
+    - name: question
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: answer
+      admin_ui: {width: 200, order: 1}
+      type: bool
+    title: question_tbl

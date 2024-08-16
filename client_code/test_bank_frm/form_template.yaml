@@ -1,0 +1,49 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - name: outlined_card_1
+    properties: {role: outlined-card, col_widths: '{"TYMDRL":50,"ESYESU":5,"PRGXAA":5}'}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'QYCFAE,KLEACC'}
+    components:
+    - name: add_question_btn
+      properties: {text: Add a question, align: right, role: outlined-button, icon: 'fa:file'}
+      type: Button
+      layout_properties: {grid_position: 'AACSUH,YXRZGF'}
+    - name: text_box_1
+      properties: {enabled: false}
+      type: TextBox
+      layout_properties: {grid_position: 'ZTMHFZ,TYMDRL'}
+      data_bindings:
+      - {property: text, code: 'self.item[''question'']', writeback: true}
+    - name: radio_button_1
+      properties: {text: 'True', value: ''}
+      type: RadioButton
+      layout_properties: {grid_position: 'ZTMHFZ,ESYESU'}
+      data_bindings:
+      - {property: selected, code: 'self.item[''answer'']', writeback: false}
+    - name: radio_button_2
+      properties: {text: 'False'}
+      type: RadioButton
+      layout_properties: {grid_position: 'ZTMHFZ,PRGXAA'}
+      data_bindings:
+      - {property: selected, code: 'self.item[''answer'']', writeback: false}
+    - name: preview_questions_rpnl
+      properties: {item_template: test_bank_frm.ItemTemplate1}
+      type: RepeatingPanel
+      layout_properties: {grid_position: 'VGRCWG,CGOHCF'}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+- name: label_1
+  properties: {text: My test bank, role: headline}
+  type: Label
+  layout_properties: {slot: title}

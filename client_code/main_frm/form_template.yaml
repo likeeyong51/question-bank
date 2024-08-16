@@ -7,7 +7,36 @@ components:
   properties: {col_widths: '{}'}
   name: content_panel
   layout_properties: {slot: default}
-  components: []
+  components:
+  - name: outlined_card_1
+    properties: {role: outlined-card}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'WQJPGK,ZJSAGX'}
+    components:
+    - name: column_panel_1
+      properties: {}
+      type: ColumnPanel
+      layout_properties: {grid_position: 'DCGZJR,VAOCHW'}
+      components:
+      - name: label_1
+        properties: {bold: true, text: 'What would you like to do?', role: input-prompt}
+        type: Label
+        layout_properties: {grid_position: 'QZTALN,TJYTLF'}
+      - name: open_testbank_rdb
+        properties: {text: open my test bank}
+        type: RadioButton
+        layout_properties: {grid_position: 'LFUBUH,SQCAZV'}
+        event_bindings: {clicked: main_options_clicked(}
+      - name: build_quiz_rdb
+        properties: {text: build a quiz}
+        type: RadioButton
+        layout_properties: {grid_position: 'LXTYZB,WZHDQI'}
+        event_bindings: {clicked: main_options_clicked(}
+      - name: take_quiz_rdb
+        properties: {text: take a quiz}
+        type: RadioButton
+        layout_properties: {grid_position: 'RXAZWU,ZPNTSB'}
+        event_bindings: {clicked: main_options_clicked(}
 - type: FlowPanel
   properties: {}
   name: navbar_links
