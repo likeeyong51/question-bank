@@ -1,43 +1,62 @@
-is_package: true
-container:
-  type: HtmlTemplate
-  properties: {html: '@theme:standard-page.html'}
 components:
-- type: ColumnPanel
-  properties: {col_widths: '{}'}
-  name: content_panel
-  layout_properties: {slot: default}
-  components:
-  - name: outlined_card_1
-    properties: {role: outlined-card}
-    type: ColumnPanel
-    layout_properties: {grid_position: 'WQJPGK,ZJSAGX'}
-    components:
-    - name: column_panel_1
-      properties: {}
-      type: ColumnPanel
-      layout_properties: {grid_position: 'DCGZJR,VAOCHW'}
-      components:
-      - name: label_1
-        properties: {bold: true, text: 'What would you like to do?', role: input-prompt}
+- components:
+  - components:
+    - components:
+      - layout_properties: {grid_position: 'QZTALN,TJYTLF'}
+        name: label_1
+        properties: {bold: true, role: input-prompt, text: 'What would you like to do?'}
         type: Label
-        layout_properties: {grid_position: 'QZTALN,TJYTLF'}
-      - name: open_testbank_rdb
-        properties: {text: open my test bank}
-        type: RadioButton
+      - event_bindings: {clicked: main_options_clicked}
         layout_properties: {grid_position: 'LFUBUH,SQCAZV'}
-        event_bindings: {clicked: main_options_clicked(}
-      - name: build_quiz_rdb
-        properties: {text: build a quiz}
+        name: open_testbank_rdb
+        properties: {text: Open my test bank}
         type: RadioButton
+      - event_bindings: {clicked: main_options_clicked(}
         layout_properties: {grid_position: 'LXTYZB,WZHDQI'}
-        event_bindings: {clicked: main_options_clicked(}
-      - name: take_quiz_rdb
+        name: build_quiz_rdb
+        properties: {text: Build a quiz}
+        type: RadioButton
+      - event_bindings: {clicked: main_options_clicked(}
+        layout_properties: {grid_position: 'RXAZWU,ZPNTSB'}
+        name: take_quiz_rdb
         properties: {text: take a quiz}
         type: RadioButton
-        layout_properties: {grid_position: 'RXAZWU,ZPNTSB'}
-        event_bindings: {clicked: main_options_clicked(}
-- type: FlowPanel
-  properties: {}
+      - layout_properties: {grid_position: 'SMKKQC,ALPTZB'}
+        name: spacer_1
+        properties: {height: 32}
+        type: Spacer
+      layout_properties: {grid_position: 'DCGZJR,VAOCHW'}
+      name: column_panel_1
+      properties: {}
+      type: ColumnPanel
+    - event_bindings: {click: main_options_clicked}
+      layout_properties: {grid_position: 'EOUGFD,XVKUBM'}
+      name: submit_btn
+      properties:
+        align: left
+        icon: fa:arrow-circle-down
+        icon_align: left
+        role: outlined-button
+        text: |
+          Submit Request
+      type: Button
+    layout_properties: {grid_position: 'WQJPGK,ZJSAGX'}
+    name: outlined_card_1
+    properties: {role: outlined-card}
+    type: ColumnPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
   name: navbar_links
-  layout_properties: {slot: nav-right}
+  properties: {}
+  type: FlowPanel
+- layout_properties: {slot: title}
+  name: label_2
+  properties: {role: headline, text: My Quiz App}
+  type: Label
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

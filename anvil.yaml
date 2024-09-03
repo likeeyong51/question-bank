@@ -1,29 +1,142 @@
 allow_embedding: false
-package_name: Question_bank
+db_schema:
+  enrolment_tbl:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: student_id
+      target: student_tbl
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: subject_code
+      target: subject_tbl
+      type: link_single
+    server: full
+    title: enrolment_tbl
+  programme_tbl:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: programme_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: programme_name
+      type: string
+    server: full
+    title: Programme_tbl
+  question_tbl:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: question_name
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: question
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: answer
+      type: bool
+    server: full
+    title: question_tbl
+  quiz_question_tbl:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: quiz_name
+      target: quiz_tbl
+      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: question_name
+      target: question_tbl
+      type: link_multiple
+    - admin_ui: {order: 2, width: 200}
+      name: student_answer
+      type: bool
+    - admin_ui: {order: 3, width: 200}
+      name: actual_answer
+      target: question_tbl
+      type: link_single
+    server: full
+    title: quiz_question_tbl
+  quiz_tbl:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: quiz_name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: start_date
+      type: datetime
+    - admin_ui: {order: 2, width: 200}
+      name: end_date
+      type: datetime
+    - admin_ui: {order: 3, width: 200}
+      name: score
+      type: number
+    - admin_ui: {order: 4, width: 200}
+      name: student_id
+      target: student_tbl
+      type: link_single
+    server: full
+    title: quiz_tbl
+  student_tbl:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: student_id
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: student_name
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: programme_id
+      target: programme_tbl
+      type: link_single
+    server: full
+    title: student_tbl
+  subject_tbl:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: subject_code
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: subject_name
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: programme_id
+      target: programme_tbl
+      type: link_single
+    server: full
+    title: subject_tbl
+  topic_tbl:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: topic_id
+      type: number
+    - admin_ui: {order: 1, width: 200}
+      name: topic_name
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: subject
+      target: subject_tbl
+      type: link_single
+    server: full
+    title: topic_tbl
+dependencies: []
+metadata: {description: Create and display a bank of questions, title: My question bank}
 name: Question_bank
-startup_form: null
+package_name: Question_bank
 renamed: true
 runtime_options:
-  version: 2
   client_version: '3'
-  server_version: python3-sandbox
   server_spec: {base: python310-standard}
-dependencies: []
+  server_version: python3-sandbox
+  version: 2
 services:
-- source: /runtime/services/tables.yml
-  client_config: {}
+- client_config: {}
   server_config: {}
-metadata: {title: My question bank, description: Create and display a bank of questions}
-startup: {type: form, module: main_frm}
-db_schema:
-  question_tbl:
-    client: none
-    server: full
-    columns:
-    - name: question
-      admin_ui: {width: 200, order: 0}
-      type: string
-    - name: answer
-      admin_ui: {width: 200, order: 1}
-      type: bool
-    title: question_tbl
+  source: /runtime/services/tables.yml
+startup: {module: main_frm, type: form}
+startup_form: null

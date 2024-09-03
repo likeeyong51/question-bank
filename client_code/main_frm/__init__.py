@@ -14,12 +14,14 @@ class main_frm(main_frmTemplate):
 
   def main_options_clicked(self, **event_args):
     """This method is called when this radio button is selected"""
-    if self.build_quiz_rdb.checked:
-      # create a quiz
-      pass
-    elif self.take_quiz_rdb.checked:
-      # take a quiz
-      pass
-    else:
+    if self.open_testbank_rdb.selected:
       # go to my test bank
+      open_form('test_bank_frm')
+      
+    elif self.build_quiz_rdb.selected:
+      # build a quiz
       pass
+      
+    else:
+      # take a quiz
+      open_form('quiz_frm')
