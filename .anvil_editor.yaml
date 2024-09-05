@@ -12,4 +12,5 @@ unique_ids:
     test_bank_frm.ItemTemplate1: '1723783647145549183972256.98065'
   modules: {}
   scripts: {}
-  server_modules: {}
+  server_modules:
+    testbank_svr_mod: '172550023489464321907024.34482'

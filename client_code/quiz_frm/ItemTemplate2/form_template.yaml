@@ -3,11 +3,15 @@ components:
   name: question_no
   properties: {align: center, bold: true}
   type: Label
-- layout_properties: {grid_position: 'SJQNSO,RDARFR AIXTYI,UJVVSN'}
+- data_bindings:
+  - {code: 'self.item[''question'']', property: text, writeback: false}
+  layout_properties: {grid_position: 'SJQNSO,RDARFR AIXTYI,UJVVSN'}
   name: question_txa
   properties: {auto_expand: true, enabled: false, font: Tahoma; Calibri, font_size: 17}
   type: TextArea
-- layout_properties: {grid_position: 'SJQNSO,RDARFR YLFVDM,PEBXOM'}
+- data_bindings:
+  - {code: 'self.item[''answer'']', property: value, writeback: false}
+  layout_properties: {grid_position: 'SJQNSO,RDARFR YLFVDM,PEBXOM'}
   name: true_rdb
   properties: {text: 'True'}
   type: RadioButton

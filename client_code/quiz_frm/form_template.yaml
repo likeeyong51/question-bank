@@ -26,6 +26,11 @@ components:
   properties: {}
   type: ColumnPanel
 - components:
+  - event_bindings: {click: back_btn_click}
+    layout_properties: {}
+    name: back_btn
+    properties: {icon: 'fa:arrow-circle-o-left', role: outlined-button, text: ''}
+    type: Button
   - layout_properties: {expand: true}
     name: student_lbl
     properties: {icon: 'fa:address-book-o', tooltip: current student}

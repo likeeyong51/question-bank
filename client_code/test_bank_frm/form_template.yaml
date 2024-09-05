@@ -17,7 +17,13 @@ components:
   name: content_panel
   properties: {}
   type: ColumnPanel
-- layout_properties: {slot: nav-right}
+- components:
+  - event_bindings: {click: back_btn_click}
+    layout_properties: {}
+    name: back_btn
+    properties: {icon: 'fa:arrow-circle-o-left', role: outlined-button, text: ''}
+    type: Button
+  layout_properties: {slot: nav-right}
   name: navbar_links
   properties: {}
   type: FlowPanel

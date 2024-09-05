@@ -1,5 +1,6 @@
 from ._anvil_designer import main_frmTemplate
 from anvil import *
+import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
@@ -20,7 +21,7 @@ class main_frm(main_frmTemplate):
       
     elif self.build_quiz_rdb.selected:
       # build a quiz
-      pass
+      open_form('build_quiz_frm')
       
     else:
       # take a quiz
