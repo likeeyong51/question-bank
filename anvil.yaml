@@ -77,6 +77,10 @@ db_schema:
       name: student_id
       target: student_tbl
       type: link_single
+    - admin_ui: {order: 5, width: 200}
+      name: student
+      target: student_tbl
+      type: link_single
     server: full
     title: quiz_tbl
   student_tbl:
