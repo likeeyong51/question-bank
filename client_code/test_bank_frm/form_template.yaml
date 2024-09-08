@@ -1,7 +1,13 @@
 components:
 - components:
   - components:
-    - layout_properties: {grid_position: 'AACSUH,YXRZGF'}
+    - data_bindings:
+      - {code: 'self.item[''quiz_name'']', property: text, writeback: true}
+      layout_properties: {grid_position: 'LLYCGL,NECLJK'}
+      name: quiz_name_txb
+      properties: {font_size: 17, placeholder: Enter your quiz name here, role: outlined}
+      type: TextBox
+    - layout_properties: {grid_position: 'LLYCGL,VYSUAM'}
       name: add_question_btn
       properties: {align: right, icon: 'fa:file', role: outlined-button, text: Add a question}
       type: Button
@@ -10,8 +16,8 @@ components:
       properties: {item_template: test_bank_frm.ItemTemplate1}
       type: RepeatingPanel
     layout_properties: {grid_position: 'QYCFAE,KLEACC'}
-    name: outlined_card_1
-    properties: {col_widths: '{"YUXNIW":50}', role: outlined-card}
+    name: testbank_card
+    properties: {col_widths: '{"NECLJK":45,"VYSUAM":15}', role: outlined-card}
     type: ColumnPanel
   layout_properties: {slot: default}
   name: content_panel
