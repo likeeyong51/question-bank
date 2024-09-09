@@ -8,8 +8,8 @@ components:
       properties: {placeholder: Enter your quiz name here, role: outlined, tooltip: Enter your quiz name here}
       type: TextBox
     - layout_properties: {grid_position: 'BQZYVK,WEOKAQ'}
-      name: add_question_btn
-      properties: {align: right, icon: 'fa:file', role: outlined-button, text: Add a question}
+      name: build_quiz_btn
+      properties: {align: right, icon: 'fa:file', role: outlined-button, text: Build Quiz}
       type: Button
     - layout_properties: {grid_position: 'VGRCWG,CGOHCF SBVTXB,NKZVZC'}
       name: preview_questions_rpnl
@@ -17,7 +17,7 @@ components:
       type: RepeatingPanel
     layout_properties: {grid_position: 'QYCFAE,KLEACC'}
     name: outlined_card_1
-    properties: {col_widths: '{"PCQUTB":45,"WEOKAQ":15}', role: outlined-card}
+    properties: {col_widths: '{"PCQUTB":50,"WEOKAQ":10}', role: outlined-card}
     type: ColumnPanel
   layout_properties: {slot: default}
   name: content_panel

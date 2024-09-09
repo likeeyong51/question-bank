@@ -1,24 +1,29 @@
 components:
 - components:
+  - data_bindings:
+    - {code: 'self.item[''question_name'']', property: text, writeback: true}
+    layout_properties: {grid_position: 'IUVJPM,VKKEWK'}
+    name: question_name_txb
+    properties: {font_size: 17, placeholder: Enter a question name e.g. t1-q1, role: outlined, tooltip: Give your question a name}
+    type: TextBox
   - layout_properties: {grid_position: 'JHQVNH,SEHAVO'}
     name: question_prompt_lbl
-    properties: {role: input-prompt, text: 'What is the question?'}
+    properties: {bold: true, font_size: 17, icon: 'fa:question-circle-o', role: input-prompt, text: 'What is the question?'}
     type: Label
   - data_bindings:
     - {code: 'self.item[''question'']', property: text, writeback: true}
-    layout_properties: {grid_position: 'LKNLHF,TETVLG'}
+    layout_properties: {grid_position: 'EKBRHG,UADJQB'}
     name: question_txa
-    properties: {auto_expand: true, placeholder: Enter/edit your question here, role: outlined}
+    properties: {auto_expand: true, font_size: 17, placeholder: Enter/edit your question here, role: outlined, tooltip: Enter your question here}
     type: TextArea
-  - data_bindings:
-    - {code: 'self.item[''answer'']', property: selected, writeback: false}
+  - data_bindings: []
+    event_bindings: {clicked: answer_clicked}
     layout_properties: {grid_position: 'DYLWZO,KYVQBC'}
     name: true_rdb
     properties: {bold: true, text: 'True', tooltip: checked if the above statement is correct}
     type: RadioButton
-  - data_bindings:
-    - {code: 'self.item[''answer'']', property: selected, writeback: false}
-    - {code: 'self.item['''']', property: text, writeback: false}
+  - data_bindings: []
+    event_bindings: {clicked: answer_clicked}
     layout_properties: {grid_position: 'SHOAGA,KSCXPK'}
     name: false_rdb
     properties: {bold: true, text: 'False', tooltip: checked if the above statement is incorrect}
@@ -27,9 +32,5 @@ components:
   name: column_panel_1
   properties: {}
   type: ColumnPanel
-- layout_properties: {grid_position: 'NNPTIB,KIQVPC'}
-  name: add_change_btn
-  properties: {align: left, icon: 'fa:arrow-circle-right', icon_align: right, role: outlined-button, text: Add}
-  type: Button
 container: {type: ColumnPanel}
 is_package: true

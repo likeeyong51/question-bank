@@ -20,17 +20,42 @@ import anvil.server
 
 # Create
 @anvil.server.callable
-def add_question(self):
-  pass
+def add_question(question): # , current_user):
+  # if question is not None:
+  #   current_user = app_tables.user_tbl.search(username=current_user)
+  #   # print(*current_user[0]['username'])
+  
+  # if current_user is not None:
+  print(question)
+  app_tables.question_tbl.add_row(**question) #, user=current_user[0])
   
 # Read
-def get_questions(self):
-  pass
+@anvil.server.callable
+def get_questions(): # username):
+  # current_user = app_tables.user_tbl.search(username=username)
+  # print(*current_user[0]['username'])
+
+  # if current_user is not None:
+  return app_tables.question_tbl.search(
+    tables.order_by("question_name", ascending=True) #,
+    # user=current_user[0]
+  )
   
 # Update
-def update_question(self):
-  pass
+@anvil.server.callable
+def update_question(old_question, new_question):
+  # print(f"updating question {question['question']} {new_status}")
+  # get the task from the reminders table
+  print(old_question)
+  print(new_question)
+  row = app_tables.reminder_tbl.get(task=old_question, user=new_question) #['user'])
+
+  if row: # if exist, update task description and status of reminder
+    row['question_name'] = new_question['question_name']
+    row['question']      = new_question['question']
+    row['answer']        = new_question['answer']
   
 # Delete
-def delete_question(self):
-  pass
+@anvil.server.callable
+def delete_question(question):
+  question.delete()
