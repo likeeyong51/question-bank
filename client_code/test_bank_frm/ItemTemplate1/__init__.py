@@ -56,5 +56,9 @@ class ItemTemplate1(ItemTemplate1Template):
     else:
       self.false_rdb.selected = True
 
+  def add_chk_change(self, **event_args):
+    """This method is called when this checkbox is checked or unchecked"""
+    pass
+
    
       
