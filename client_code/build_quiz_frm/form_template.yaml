@@ -13,7 +13,7 @@ components:
       type: Button
     - layout_properties: {grid_position: 'VGRCWG,CGOHCF SBVTXB,NKZVZC'}
       name: preview_questions_rpnl
-      properties: {item_template: test_bank_frm.ItemTemplate1, tooltip: eElect your questions form the question bank}
+      properties: {item_template: build_quiz_frm.ItemTemplate2, tooltip: eElect your questions form the question bank}
       type: RepeatingPanel
     layout_properties: {grid_position: 'QYCFAE,KLEACC'}
     name: outlined_card_1
