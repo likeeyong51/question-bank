@@ -1,7 +1,7 @@
 components:
 - data_bindings:
   - {code: 'self.item[''question'']', property: text, writeback: false}
-  layout_properties: {grid_position: 'YHJBPB,EJPRWX'}
+  layout_properties: {grid_position: 'YHJBPB,EJPRWX PVHBFT,VHWWSO'}
   name: question_txa
   properties:
     auto_expand: true
@@ -12,31 +12,33 @@ components:
     text: |2+
 
   type: TextArea
-- layout_properties: {grid_position: 'YHJBPB,GRNQYY YRETHL,CQXHWZ'}
-  name: check_box_1
-  properties: {text: '', tooltip: Check to select question}
-  type: CheckBox
-- layout_properties: {grid_position: 'YHJBPB,GRNQYY YRETHL,ERVGIA'}
-  name: edit_btn
-  properties: {align: left, icon: 'fa:pencil-square-o', icon_align: left, text: '', tooltip: Edit this question}
-  type: Button
-- layout_properties: {grid_position: 'YHJBPB,GRNQYY VFVDYF,UHGNBO'}
-  name: delete_btn
-  properties: {align: left, icon: 'fa:trash-o', text: '', tooltip: Delete this question}
-  type: Button
 - data_bindings:
   - {code: 'self.item[''answer'']', property: value, writeback: false}
-  layout_properties: {grid_position: 'HPOSEZ,ZBMMIY'}
+  layout_properties: {grid_position: 'YHJBPB,EJPRWX WYTOZN,FXNEBK'}
   name: true_rdb
   properties: {bold: true, text: 'True'}
   type: RadioButton
 - data_bindings:
   - {code: 'self.item[''answer'']', property: value, writeback: false}
-  layout_properties: {grid_position: 'HPOSEZ,GVTEPD'}
+  layout_properties: {grid_position: 'YHJBPB,EJPRWX WYTOZN,ASCZIS'}
   name: False_rdb
   properties: {bold: true, text: 'False'}
   type: RadioButton
+- data_bindings:
+  - {code: 'self.item[''select_for_quiz'']', property: checked, writeback: false}
+  layout_properties: {grid_position: 'YHJBPB,GRNQYY IJALPV,TWFSOF'}
+  name: check_box_1
+  properties: {text: ''}
+  type: CheckBox
+- layout_properties: {grid_position: 'YHJBPB,GRNQYY YRETHL,ERVGIA'}
+  name: edit_btn
+  properties: {align: left, icon: 'fa:pencil-square-o', icon_align: left_edge, text: '', tooltip: Edit this question}
+  type: Button
+- layout_properties: {grid_position: 'YHJBPB,GRNQYY VFVDYF,UHGNBO'}
+  name: delete_btn
+  properties: {align: left, icon: 'fa:trash-o', icon_align: left_edge, text: '', tooltip: Delete this question}
+  type: Button
 container:
-  properties: {col_widths: '{"ZBMMIY":10,"GVTEPD":50,"EJPRWX":70,"GRNQYY":5}'}
+  properties: {col_widths: '{"EJPRWX":85,"GRNQYY":5,"FXNEBK":10,"ASCZIS":50}'}
   type: ColumnPanel
 is_package: true
