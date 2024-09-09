@@ -48,7 +48,7 @@ def update_question(old_question, new_question):
   # get the task from the reminders table
   print(old_question)
   print(new_question)
-  row = app_tables.reminder_tbl.get(task=old_question, user=new_question) #['user'])
+  row = app_tables.question_tbl.get(question=old_question) #, user=new_question['user'])
 
   if row: # if exist, update task description and status of reminder
     row['question_name'] = new_question['question_name']

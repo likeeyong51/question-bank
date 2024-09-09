@@ -14,13 +14,14 @@ components:
   type: TextArea
 - data_bindings:
   - {code: 'self.item[''question_name'']', property: group_name, writeback: false}
-  event_bindings: {clicked: true_rdb_clicked}
+  event_bindings: {clicked: answer_rdb_clicked}
   layout_properties: {grid_position: 'YHJBPB,EJPRWX WYTOZN,FXNEBK'}
   name: true_rdb
   properties: {bold: true, text: 'True'}
   type: RadioButton
 - data_bindings:
   - {code: 'self.item[''question_name'']', property: group_name, writeback: false}
+  event_bindings: {clicked: answer_rdb_clicked}
   layout_properties: {grid_position: 'YHJBPB,EJPRWX WYTOZN,ASCZIS'}
   name: false_rdb
   properties: {bold: true, text: 'False'}
@@ -30,7 +31,8 @@ components:
   name: add_to_quiz_chk
   properties: {text: ''}
   type: CheckBox
-- layout_properties: {grid_position: 'YHJBPB,GRNQYY YRETHL,ERVGIA'}
+- event_bindings: {click: edit_btn_click}
+  layout_properties: {grid_position: 'YHJBPB,GRNQYY YRETHL,ERVGIA'}
   name: edit_btn
   properties: {align: left, icon: 'fa:pencil-square-o', icon_align: left_edge, text: '', tooltip: Edit this question}
   type: Button
