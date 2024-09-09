@@ -31,7 +31,7 @@ class ItemTemplate1(ItemTemplate1Template):
     print(old_question)
     # open an alert displaying the ArticleEdit form
     save_clicked = alert(
-      content = edit_question_frm(item=new_question),
+      content = edit_question_frm(item=new_question, edit=True),
       title   = "Update Question",
       large   = True,
       buttons = [("Save", True),("Cancel", False)]

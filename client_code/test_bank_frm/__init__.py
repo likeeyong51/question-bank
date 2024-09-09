@@ -27,7 +27,7 @@ class test_bank_frm(test_bank_frmTemplate):
     new_question = {}
     # open an alert displaying the ARticleEdit form
     save_clicked = alert(
-      content = edit_question_frm(item=new_question),
+      content = edit_question_frm(item=new_question, edit=False),
       title   = "Add Question",
       large   = True,
       buttons = [("Save", True),("Cancel", False)]

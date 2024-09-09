@@ -12,6 +12,11 @@ class edit_question_frm(edit_question_frmTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+    if properties['edit']:
+      if self.item['answer']:
+        self.true_rdb.selected  = True
+      else:
+        self.false_rdb.selected = True
 
   def answer_clicked(self, **event_args):
     """This method is called when this radio button is selected"""

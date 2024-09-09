@@ -26,11 +26,6 @@ components:
   name: false_rdb
   properties: {bold: true, text: 'False'}
   type: RadioButton
-- data_bindings: []
-  layout_properties: {grid_position: 'YHJBPB,GRNQYY IJALPV,TWFSOF'}
-  name: add_to_quiz_chk
-  properties: {text: ''}
-  type: CheckBox
 - event_bindings: {click: edit_btn_click}
   layout_properties: {grid_position: 'YHJBPB,GRNQYY YRETHL,ERVGIA'}
   name: edit_btn
