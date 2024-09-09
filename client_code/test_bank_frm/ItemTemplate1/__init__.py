@@ -39,13 +39,14 @@ class ItemTemplate1(ItemTemplate1Template):
 
     if save_clicked:
       print(new_question)
-      self.question_txa.text  = new_question['question']
+      # referesh form interface with new change(s)
+      self.question_txa.text = new_question['question']
       
       if new_question['answer']:
         self.true_rdb.selected  = True
       else:
         self.false_rdb.selected = True
-      print(new_question['answer'])
+      # update question database
       anvil.server.call('update_question', old_question, new_question)
 
   def answer_rdb_clicked(self, **event_args):
