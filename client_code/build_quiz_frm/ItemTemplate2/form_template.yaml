@@ -31,7 +31,17 @@ components:
   name: false_rdb
   properties: {bold: true, text: 'False'}
   type: RadioButton
+- data_bindings:
+  - {code: 'self.item[''mark'']', property: text, writeback: true}
+  layout_properties: {grid_position: 'WYTOZN,YHEVCB'}
+  name: mark_txb
+  properties: {align: center, enabled: false, role: outlined, type: number}
+  type: TextBox
+- layout_properties: {grid_position: 'WYTOZN,MECLWX'}
+  name: spacer_1
+  properties: {height: 32}
+  type: Spacer
 container:
-  properties: {col_widths: '{"FXNEBK":10,"ASCZIS":50,"VHWWSO":80,"RBWQEH":5}', tooltip: ''}
+  properties: {col_widths: '{"FXNEBK":10,"ASCZIS":65,"VHWWSO":80,"RBWQEH":5,"YHEVCB":10,"MECLWX":5}', tooltip: ''}
   type: ColumnPanel
 is_package: true

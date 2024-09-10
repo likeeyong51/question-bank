@@ -44,6 +44,9 @@ db_schema:
     - admin_ui: {width: 200}
       name: answer
       type: bool
+    - admin_ui: {order: 4, width: 200}
+      name: mark
+      type: number
     server: full
     title: question_tbl
   quiz_question_tbl:
@@ -60,9 +63,13 @@ db_schema:
     - admin_ui: {width: 200}
       name: student_answer
       type: bool
-    - admin_ui: {width: 200}
-      name: actual_answer
+    - admin_ui: {order: 3, width: 200}
+      name: answer
       target: question_tbl
+      type: link_single
+    - admin_ui: {order: 4, width: 200}
+      name: username
+      target: user_tbl
       type: link_single
     server: full
     title: quiz_question_tbl
@@ -78,22 +85,18 @@ db_schema:
     - admin_ui: {width: 200}
       name: end_date
       type: datetime
-    - admin_ui: {width: 200}
-      name: score
+    - admin_ui: {order: 3, width: 200}
+      name: out_of
       type: number
-    - admin_ui: {order: 4, width: 200}
-      name: user_id
-      target: user_tbl
-      type: link_single
-    - admin_ui: {order: 5, width: 200}
+    - admin_ui: {width: 200}
       name: owner
       target: user_tbl
       type: link_single
-    - admin_ui: {order: 6, width: 200}
+    - admin_ui: {width: 200}
       name: modified_by
       target: user_tbl
       type: link_single
-    - admin_ui: {order: 7, width: 200}
+    - admin_ui: {width: 200}
       name: modified_on
       type: datetime
     server: full

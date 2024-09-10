@@ -54,6 +54,7 @@ def update_question(old_question, new_question):
     row['question_name'] = new_question['question_name']
     row['question']      = new_question['question']
     row['answer']        = new_question['answer']
+    row['mark']          = new_question['mark']
   
 # Delete
 @anvil.server.callable

@@ -51,6 +51,9 @@ class ItemTemplate1(ItemTemplate1Template):
       else:
         self.false_rdb.selected = True
       
+      # update question score
+      self.mark_txb.text = new_question['mark']
+      
 
   def answer_rdb_clicked(self, **event_args):
     """This method is called when this radio button is selected"""
