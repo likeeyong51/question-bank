@@ -13,6 +13,14 @@ db_schema:
       type: link_single
     server: full
     title: enrolment_tbl
+  group_tbl:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: group
+      type: string
+    server: full
+    title: group_tbl
   programme_tbl:
     client: search
     columns:
@@ -73,10 +81,21 @@ db_schema:
     - admin_ui: {width: 200}
       name: score
       type: number
-    - admin_ui: {width: 200}
-      name: student_id
+    - admin_ui: {order: 4, width: 200}
+      name: user_id
       target: user_tbl
       type: link_single
+    - admin_ui: {order: 5, width: 200}
+      name: owner
+      target: user_tbl
+      type: link_single
+    - admin_ui: {order: 6, width: 200}
+      name: modified_by
+      target: user_tbl
+      type: link_single
+    - admin_ui: {order: 7, width: 200}
+      name: modified_on
+      type: datetime
     server: full
     title: quiz_tbl
   subject_tbl:
@@ -113,21 +132,25 @@ db_schema:
     client: search
     columns:
     - admin_ui: {width: 200}
-      name: student_id
-      type: string
-    - admin_ui: {width: 200}
-      name: student_name
-      type: string
-    - admin_ui: {width: 200}
       name: programme_id
       target: programme_tbl
       type: link_single
+    - admin_ui: {width: 200}
+      name: user_id
+      type: string
+    - admin_ui: {width: 200}
+      name: name
+      type: string
+    - admin_ui: {width: 200}
+      name: group
+      target: group_tbl
+      type: link_single
     server: full
-    title: student_tbl
+    title: user_tbl
 dependencies: []
 metadata: {description: Create and display a bank of questions, title: My question bank}
-name: Question_bank
-package_name: Question_bank
+name: My Question_bank
+package_name: My_Question_bank
 renamed: true
 runtime_options:
   client_version: '3'
