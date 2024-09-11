@@ -4,7 +4,8 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-
+from anvil import Notification
+from ..user_frm import user_frm
 
 class main_frm(main_frmTemplate):
   def __init__(self, **properties):
@@ -12,12 +13,16 @@ class main_frm(main_frmTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
-    self.item['username'] = properties['username']
-    self.item['group']    = properties['group']
+    self.item['group'] = properties['group']
+
+    # process and set group privilege options
+    self.set_group_privilege()
+      
 
     # populate user dropdown
     self.user_drp.items = [
-      self.item['username'],
+      properties['username'],
+      'Switch user',
       'Log out'
     ]
 
@@ -34,3 +39,21 @@ class main_frm(main_frmTemplate):
     else:
       # take a quiz
       open_form('quiz_frm')
+
+  def set_group_privilege(self):
+    # hide options not available to students
+    if self.item['group'] == 'Student':
+      self.open_testbank_rdb.visible = False
+      self.build_quiz_rdb.visible    = False
+    else:
+      self.open_testbank_rdb.visible = True
+      self.build_quiz_rdb.visible    = True
+
+  def user_drp_change(self, **event_args):
+    """This method is called when an item is selected"""
+    if self.user_drp.selected_value == 'Log out':
+      Notification('Good bye!', title='Logging out...').show()
+      open_form('user_frm')
+
+    elif self.user_drp.selected_value == 'Switch user':
+      alert(content=user_frm(), large=True)
