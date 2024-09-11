@@ -60,8 +60,8 @@ class user_frm(user_frmTemplate):
         user_exist = anvil.server.call('authenticate_user', self.item['username'], self.item['password'])
     
         if user_exist:
-          # alert("Welcome to your reminder app")
-          open_form('main_frm', username=self.item['username'])
+          open_form('main_frm', username=self.item['username'], group=self.item['group'])
+          Notification('Welcome to your test bank!', title='Welcome').show()
         else:
           alert('Please check your login credentials and try again...', title='Error')
 
