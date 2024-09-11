@@ -95,13 +95,18 @@ class user_frm(user_frmTemplate):
     """reset form to login mode"""
     self.sign_up_chk.checked      = False
     self.login_signup_btn.text    = 'Log In'
+    self.login_signup_lbl.text    = 'User Log In'
     
     self.username_txb.text        = ''
     self.password_txb.text        = ''
     self.group_drp.selected_value = None
+    
     self.firstname_txb.text       = ''
-    self.lastname_txb.text       = ''
+    self.lastname_txb.text        = ''
     self.email_txb.text           = ''
+    self.firstname_txb.visible    = False
+    self.lastname_txb.visible     = False
+    self.email_txb.visible        = False
 
     self.username_txb.focus()
         

@@ -18,10 +18,10 @@ import anvil.server
 
 @anvil.server.callable
 def create_user(user_info):
-  row = app_tables.user_tbl.search(username=user_info['username'], password=user_info['password'])
+  user = app_tables.user_tbl.get(username=user_info['username'], password=user_info['password'])
 
   # check if user exists
-  if len(row) == 1:
+  if user:
     return False # user exists 
 
   # add new user to the user table
@@ -40,17 +40,20 @@ def create_user(user_info):
 
 @anvil.server.callable
 def authenticate_user(username, password, group):
-  # print(username, password)
-  user = app_tables.user_tbl.search(username=username, password=password)
-
-  if user:
+  # get user record based on login credential
+  user = app_tables.user_tbl.get(username=username, password=password)
+  # print(*user['group'])
+  
+  if user: # if user exists
+    # get the actual user group
     user_group = user['group']
-    group = app_tables.group_tbl.get(group=user_group['group'])
-
-    if group
-  # if user exist
-  if len(user) == 1:
-    return True # found
-
-  # user does not exist yet
+    
+    if user_group: # if  user group exists
+      # retrieve user group name
+      group_name = app_tables.group_tbl.get(group=user_group['group'])
+      # if group name exists and it matches user's login group
+      if group_name and group_name['group'] == group:
+        return True
+  
+  # user does not exist yet or does not belong to the right group
   return False # not found
