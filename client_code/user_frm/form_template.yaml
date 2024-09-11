@@ -1,5 +1,9 @@
 components:
 - components:
+  - layout_properties: {grid_position: 'QAISPG,CPAQKZ'}
+    name: spacer_9
+    properties: {height: '51'}
+    type: Spacer
   - components:
     - layout_properties: {grid_position: 'CDCCTW,ZVZVVZ'}
       name: spacer_3
@@ -18,15 +22,21 @@ components:
       properties: {height: 32}
       type: Spacer
     - components:
-      - layout_properties: {}
+      - data_bindings:
+        - {code: 'self.item[''username'']', property: text, writeback: true}
+        layout_properties: {}
         name: username_txb
         properties: {placeholder: Username, role: outlined}
         type: TextBox
-      - layout_properties: {column: 'null'}
+      - data_bindings:
+        - {code: 'self.item[''password'']', property: text, writeback: true}
+        layout_properties: {column: 'null'}
         name: password_txb
-        properties: {placeholder: Password, role: outlined}
+        properties: {hide_text: true, placeholder: Password, role: outlined}
         type: TextBox
-      - layout_properties: {column: 'null'}
+      - data_bindings:
+        - {code: 'self.item[''group'']', property: selected_value, writeback: true}
+        layout_properties: {column: 'null'}
         name: group_drp
         properties: {background: '', include_placeholder: true, placeholder: User Group, role: outlined}
         type: DropDown
@@ -39,15 +49,21 @@ components:
       properties: {background: 'theme:Surface', foreground: ''}
       type: DataRowPanel
     - components:
-      - layout_properties: {}
+      - data_bindings:
+        - {code: 'self.item[''first_name'']', property: text, writeback: true}
+        layout_properties: {}
         name: firstname_txb
         properties: {placeholder: First Name, visible: false}
         type: TextBox
-      - layout_properties: {column: 'null'}
+      - data_bindings:
+        - {code: 'self.item[''last_name'']', property: text, writeback: true}
+        layout_properties: {column: 'null'}
         name: lastname_txb
         properties: {placeholder: Last Name, visible: false}
         type: TextBox
-      - layout_properties: {column: 'null'}
+      - data_bindings:
+        - {code: 'self.item[''email'']', property: text, writeback: true}
+        layout_properties: {column: 'null'}
         name: email_txb
         properties: {placeholder: E-mail, visible: false}
         type: TextBox
@@ -67,7 +83,8 @@ components:
       name: spacer_1
       properties: {height: 32}
       type: Spacer
-    - layout_properties: {grid_position: 'JMWCQF,ISMXYW'}
+    - event_bindings: {click: login_signup_btn_click}
+      layout_properties: {grid_position: 'JMWCQF,ISMXYW'}
       name: login_signup_btn
       properties: {align: center, font_size: 21, icon: 'fa:arrow-circle-o-right', icon_align: right, role: outlined-button, text: Log In}
       type: Button
@@ -82,11 +99,15 @@ components:
       type: CheckBox
     layout_properties: {full_width_row: false, grid_position: 'KDEWOW,TLWHWJ', row_background: 'theme:On Primary Container'}
     name: user_card
-    properties: {col_widths: '{"ISMXYW":18,"NUYPFT":37,"MGDYID":25,"YRJXPT":40,"UDVTBD":35,"TRVYSX":10,"WIKPRE":10}', role: outlined-card}
+    properties: {col_widths: '{"ISMXYW":18,"NUYPFT":38,"MGDYID":24,"YRJXPT":39,"UDVTBD":36,"TRVYSX":10,"WIKPRE":10}', role: outlined-card}
     type: ColumnPanel
+  - layout_properties: {grid_position: 'BBYDNU,DPSMCY'}
+    name: spacer_10
+    properties: {height: '51'}
+    type: Spacer
   layout_properties: {slot: default}
   name: content_panel
-  properties: {}
+  properties: {background: 'theme:On Primary Container'}
   type: ColumnPanel
 - layout_properties: {slot: nav-right}
   name: navbar_links
