@@ -39,12 +39,17 @@ def create_user(user_info):
   return True # new user added to the database
 
 @anvil.server.callable
-def authenticate_user(username, password):
+def authenticate_user(username, password, group):
   # print(username, password)
-  row = app_tables.user_tbl.search(username=username, password=password)
+  user = app_tables.user_tbl.search(username=username, password=password)
 
+  if user:
+    user_group = user['group']
+    group = app_tables.group_tbl.get(group=user_group['group'])
+
+    if group
   # if user exist
-  if len(row) == 1:
+  if len(user) == 1:
     return True # found
 
   # user does not exist yet

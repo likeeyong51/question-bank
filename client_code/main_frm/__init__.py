@@ -12,6 +12,14 @@ class main_frm(main_frmTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+    self.item['username'] = properties['username']
+    self.item['group']    = properties['group']
+
+    # populate user dropdown
+    self.user_drp.items = [
+      self.item['username'],
+      'Log out'
+    ]
 
   def main_options_clicked(self, **event_args):
     """This method is called when this radio button is selected"""
