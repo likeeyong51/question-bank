@@ -1,0 +1,98 @@
+components:
+- components:
+  - components:
+    - layout_properties: {grid_position: 'CDCCTW,ZVZVVZ'}
+      name: spacer_3
+      properties: {height: 15}
+      type: Spacer
+    - layout_properties: {grid_position: 'BFTYJF,KKAAXO'}
+      name: login_signup_lbl
+      properties: {align: center, icon: 'fa:500px', role: title, text: User Log In}
+      type: Label
+    - layout_properties: {grid_position: 'JNFNUQ,GWHZLW'}
+      name: spacer_7
+      properties: {height: '5'}
+      type: Spacer
+    - layout_properties: {grid_position: 'UGFYMP,TRVYSX'}
+      name: spacer_4
+      properties: {height: 32}
+      type: Spacer
+    - components:
+      - layout_properties: {}
+        name: username_txb
+        properties: {placeholder: Username, role: outlined}
+        type: TextBox
+      - layout_properties: {column: 'null'}
+        name: password_txb
+        properties: {placeholder: Password, role: outlined}
+        type: TextBox
+      - layout_properties: {column: 'null'}
+        name: group_drp
+        properties: {background: '', include_placeholder: true, placeholder: User Group, role: outlined}
+        type: DropDown
+      - layout_properties: {column: 'null'}
+        name: spacer_2
+        properties: {height: 21}
+        type: Spacer
+      layout_properties: {grid_position: 'UGFYMP,YRJXPT'}
+      name: data_row_panel_1
+      properties: {background: 'theme:Surface', foreground: ''}
+      type: DataRowPanel
+    - components:
+      - layout_properties: {}
+        name: firstname_txb
+        properties: {placeholder: First Name, visible: false}
+        type: TextBox
+      - layout_properties: {column: 'null'}
+        name: lastname_txb
+        properties: {placeholder: Last Name, visible: false}
+        type: TextBox
+      - layout_properties: {column: 'null'}
+        name: email_txb
+        properties: {placeholder: E-mail, visible: false}
+        type: TextBox
+      - layout_properties: {column: 'null'}
+        name: spacer_6
+        properties: {height: '17'}
+        type: Spacer
+      layout_properties: {grid_position: 'UGFYMP,UDVTBD'}
+      name: data_row_panel_2
+      properties: {}
+      type: DataRowPanel
+    - layout_properties: {grid_position: 'UGFYMP,WIKPRE'}
+      name: spacer_5
+      properties: {height: 32}
+      type: Spacer
+    - layout_properties: {grid_position: 'JMWCQF,MGDYID'}
+      name: spacer_1
+      properties: {height: 32}
+      type: Spacer
+    - layout_properties: {grid_position: 'JMWCQF,ISMXYW'}
+      name: login_signup_btn
+      properties: {align: center, font_size: 21, icon: 'fa:arrow-circle-o-right', icon_align: right, role: outlined-button, text: Log In}
+      type: Button
+    - layout_properties: {grid_position: 'JMWCQF,NUYPFT TYWVNX,UDEUFE'}
+      name: spacer_8
+      properties: {height: 2}
+      type: Spacer
+    - event_bindings: {change: sign_up_chk_change}
+      layout_properties: {grid_position: 'JMWCQF,NUYPFT UPXDDO,UCVZZN'}
+      name: sign_up_chk
+      properties: {align: left, font_size: 15, text: Sign Up, visible: true}
+      type: CheckBox
+    layout_properties: {full_width_row: false, grid_position: 'KDEWOW,TLWHWJ', row_background: 'theme:On Primary Container'}
+    name: user_card
+    properties: {col_widths: '{"ISMXYW":18,"NUYPFT":37,"MGDYID":25,"YRJXPT":40,"UDVTBD":35,"TRVYSX":10,"WIKPRE":10}', role: outlined-card}
+    type: ColumnPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

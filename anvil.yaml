@@ -164,5 +164,5 @@ services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/tables.yml
-startup: {module: main_frm, type: form}
+startup: {module: user_frm, type: form}
 startup_form: null
