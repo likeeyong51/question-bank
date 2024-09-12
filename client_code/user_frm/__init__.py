@@ -68,11 +68,16 @@ class user_frm(user_frmTemplate):
     else:
       # log in mode
       if self.validate_input_data():
-        user_exist = anvil.server.call('authenticate_user', self.item['username'], self.item['password'], self.item['group'])
+        user_exist = anvil.server.call(
+          'authenticate_user', 
+          self.item['username'], 
+          self.item['password'], 
+          self.item['group'])
     
         if user_exist:
           if self.item['mode'] == 'switch-user':
-            self.raise_event('x-close-alert', value='Login successful') # close the alert
+            # close the alert automatically after successful login
+            self.raise_event('x-close-alert', value='Login successful')
             
           open_form('main_frm', username=self.item['username'], group=self.item['group'])
           Notification('Welcome to your test bank!', title='Welcome').show()

@@ -52,6 +52,7 @@ class main_frm(main_frmTemplate):
       # populate user dropdown
       self.user_drp.items = [
         self.item['username'],
+        'Change password',
         'Log out'
       ]
       
@@ -63,6 +64,7 @@ class main_frm(main_frmTemplate):
       self.user_drp.items = [
         self.item['username'],
         'Switch user',
+        'Change Password',
         'Log out'
       ]
 
@@ -87,4 +89,6 @@ class main_frm(main_frmTemplate):
 
       if not switch_user and previous_user == self.item['username']:
         Notification('Switch user cancelled').show()
-        
+
+    elif self.user_drp.selected_value == 'Change password':
+      pass
