@@ -18,36 +18,53 @@ class main_frm(main_frmTemplate):
 
     # process and set group privilege options
     self.set_group_privilege()
-
-    # populate user dropdown
-    self.user_drp.items = [
-      self.item['username'],
-      'Switch user',
-      'Log out'
-    ]
+    
 
   def main_options_clicked(self, **event_args):
     """This method is called when this radio button is selected"""
     if self.goto_testbank_rdb.selected:
       # go to my test bank
-      open_form('test_bank_frm', group=self.item['group'])
+      open_form(
+        'test_bank_frm', 
+        username=self.item['username'], 
+        group=self.item['group'])
       
     elif self.build_quiz_rdb.selected:
       # build a quiz
-      open_form('build_quiz_frm', group=self.item['group'])
+      open_form(
+        'build_quiz_frm', 
+        username=self.item['username'], 
+        group=self.item['group'])
       
     else:
       # take a quiz
-      open_form('quiz_frm', group=self.item['group'])
+      open_form(
+        'quiz_frm', 
+        username=self.item['username'], 
+        group=self.item['group'])
 
   def set_group_privilege(self):
     # hide options not available to students
     if self.item['group'] == 'Student':
       self.goto_testbank_rdb.visible = False
       self.build_quiz_rdb.visible    = False
+
+      # populate user dropdown
+      self.user_drp.items = [
+        self.item['username'],
+        'Log out'
+      ]
+      
     else:
       self.goto_testbank_rdb.visible = True
       self.build_quiz_rdb.visible    = True
+
+      # populate user dropdown
+      self.user_drp.items = [
+        self.item['username'],
+        'Switch user',
+        'Log out'
+      ]
 
   def user_drp_change(self, **event_args):
     """This method is called when an item is selected"""
@@ -56,18 +73,18 @@ class main_frm(main_frmTemplate):
       open_form('user_frm')
 
     elif self.user_drp.selected_value == 'Switch user':
+      # reset user drop box
+      self.user_drp.selected_value = self.user_drp.items[0]
+      # store user before switching
       previous_user = self.item['username']
       
       switch_user = alert(
-        content=user_frm(), 
+        content=user_frm(mode='switch-user'),
+        title='Switch User Login',
         large=True,
-        buttons=[('Confirm Switch', True), ('Cancel', False)]
+        buttons=[('Cancel', False)]
       )
 
-      # if switch_user:
-      #   if previous_user != self.item['username']:
-      #     Notification('Switch user successful').show()
-      # else:
-      #   if previous_user == self.item['username']:
-      #     Notification('Switch user cancelled').show()
+      if not switch_user and previous_user == self.item['username']:
+        Notification('Switch user cancelled').show()
         

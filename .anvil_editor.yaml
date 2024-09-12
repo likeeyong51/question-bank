@@ -15,5 +15,5 @@ unique_ids:
   modules: {}
   scripts: {}
   server_modules:
-    authenciation_svr_mod: '1726020220659961773329227.5044'
+    authentication_svr_mod: '1726020220659961773329227.5044'
     testbank_svr_mod: '172550023489464321907024.34482'

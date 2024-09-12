@@ -12,6 +12,11 @@ class user_frm(user_frmTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens
+    if 'mode' not in properties: # default mode: login-signup
+      self.item['mode'] = 'login-signup'
+    else: # called from an alert dialog for switch-user mode
+      self.item['mode'] = properties['mode']
+    
     # populate group dropdown items
     self.group = [
       grp['group'] for grp in app_tables.group_tbl.search()
@@ -25,6 +30,7 @@ class user_frm(user_frmTemplate):
       self.login_signup_btn.text = 'Sign Up'
       self.login_signup_lbl.text = 'New User Sign Up'
       self.login_signup_btn.icon = 'fa:check-circle-o'
+      
       self.firstname_txb.visible = True
       self.lastname_txb.visible  = True
       self.email_txb.visible     = True
@@ -39,18 +45,23 @@ class user_frm(user_frmTemplate):
   def login_signup_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
     if self.sign_up_chk.checked:
-      # sign up mode
+      # sign-up mode
       if self.validate_input_data():
         # print(self.item)
         if not anvil.server.call('create_user', self.item):
           Notification('User already exists.').show()
           self.reset_form()
+          
+          # reset ui for sign-up mode
+          self.sign_up_chk.checked = True
+          self.sign_up_chk.raise_event('change') # invoke the change event for the sign-up checkbox
+          # go back to sign-up mode
           return
 
         # check if new user has been successfully added into the user table 
         if anvil.server.call('authenticate_user', self.item['username'], self.item['password'], self.item['group']):
           self.reset_form()
-          Notification('You are signed up! Please attempt your first login', 
+          Notification('You are signed up!\nPlease attempt your first login...', 
                        title='Welcome to your Test Bank App').show()
       else:
         alert('Please enter your username, password and email', title='Error')
@@ -60,6 +71,9 @@ class user_frm(user_frmTemplate):
         user_exist = anvil.server.call('authenticate_user', self.item['username'], self.item['password'], self.item['group'])
     
         if user_exist:
+          if self.item['mode'] == 'switch-user':
+            self.raise_event('x-close-alert', value='Login successful') # close the alert
+            
           open_form('main_frm', username=self.item['username'], group=self.item['group'])
           Notification('Welcome to your test bank!', title='Welcome').show()
         else:
@@ -67,12 +81,15 @@ class user_frm(user_frmTemplate):
 
   def validate_input_data(self):
     # validate login data
+    # user has not entered a username
     if self.username_txb.text == '':
       alert('Please enter your username',    title='Error')
       return False
+    # user has not entered a password
     if self.password_txb.text == '':
       alert('Please enter a valid password', title='Error')
       return False
+    # user has not selected a group
     if self.group_drp.selected_value not in self.group_drp.items:
       alert('Please select your user group', title='Error')
       return False

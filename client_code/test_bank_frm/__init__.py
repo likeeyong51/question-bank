@@ -12,6 +12,9 @@ class test_bank_frm(test_bank_frmTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+    self.item['username'] = properties['username']
+    self.item['group']    = properties['group']
+    
     self.refresh_questions()
 
     # set delete_reminder event handler to the reminders_pnl
@@ -19,7 +22,7 @@ class test_bank_frm(test_bank_frmTemplate):
 
   def back_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
-    open_form('main_frm')
+    open_form('main_frm', username=self.item['username'], group=self.item['group'])
 
   def add_question_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
