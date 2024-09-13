@@ -59,7 +59,11 @@ class user_frm(user_frmTemplate):
           return
 
         # check if new user has been successfully added into the user table 
-        if anvil.server.call('authenticate_user', self.item['username'], self.item['password'], self.item['group']):
+        if anvil.server.call(
+          'authenticate_user', 
+          self.item['username'], 
+          self.item['password'], 
+          self.item['group']):
           self.reset_form()
           Notification('You are signed up!\nPlease attempt your first login...', 
                        title='Welcome to your Test Bank App').show()

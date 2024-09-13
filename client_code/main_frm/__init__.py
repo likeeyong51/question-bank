@@ -6,6 +6,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from anvil import Notification
 from ..user_frm import user_frm
+from ..password_change_frm import password_change_frm
 
 class main_frm(main_frmTemplate):
   def __init__(self, **properties):
@@ -91,4 +92,26 @@ class main_frm(main_frmTemplate):
         Notification('Switch user cancelled').show()
 
     elif self.user_drp.selected_value == 'Change password':
-      pass
+      # reset user drop box
+      self.user_drp.selected_value = self.user_drp.items[0]
+      
+      change_key = alert(
+        content=password_change_frm(item=self.item),
+        title='Change password',
+        buttons=[('Save', True), ('Cancel', False)]
+      )
+
+      if not change_key:
+        Notification('Change password cancelled').show()
+      else:
+        # prompt user to log in with new password
+        self.user_drp.selected_value = 'Switch user'
+
+        # update user password
+        if anvil.server.call('update_user_password', self.item):
+          # call the change event handler
+          self.user_drp_change()
+          Notification('Update password successful. Please log in with your new password').show()
+        else:
+          # password update fails
+          Notification('Error: User not found. Please try again.').show()

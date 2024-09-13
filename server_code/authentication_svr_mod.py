@@ -57,3 +57,17 @@ def authenticate_user(username, password, group):
   
   # user does not exist yet or does not belong to the right group
   return False # not found
+
+@anvil.server.callable
+def update_user_password(user_info):
+  # get user record on login credential
+  user = app_tables.user_tbl.get(username=user_info['username'], password=user_info['old_password'])
+  print(*user_info)
+
+  if user: # if user exists
+    # update user password
+    user['password'] = user_info['new_password']
+    return True
+
+  # update fails - user not found
+  return False
