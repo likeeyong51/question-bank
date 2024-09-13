@@ -9,6 +9,18 @@ components:
       name: spacer_3
       properties: {height: 32}
       type: Spacer
+    - layout_properties: {grid_position: 'ZYDEIF,FTOUHW HKTTRP,OIQSIS'}
+      name: label_2
+      properties: {align: right, font_size: 22, icon: 'fa:keyboard-o'}
+      type: Label
+    - layout_properties: {grid_position: 'ZYDEIF,FTOUHW PFPDUX,ENKKNU'}
+      name: spacer_4
+      properties: {height: 12}
+      type: Spacer
+    - layout_properties: {grid_position: 'ZYDEIF,FTOUHW JHVBDR,VJEJJV'}
+      name: label_3
+      properties: {align: right, font_size: 21, icon: 'fa:repeat'}
+      type: Label
     - data_bindings:
       - {code: 'self.item[''old_password'']', property: text, writeback: true}
       layout_properties: {grid_position: 'ZYDEIF,UCWGVC WYDNFV,OMLLXJ'}
@@ -21,16 +33,30 @@ components:
       type: Spacer
     - data_bindings:
       - {code: 'self.item[''new_password'']', property: text, writeback: true}
+      event_bindings: {change: new_password_txb_change}
       layout_properties: {grid_position: 'ZYDEIF,UCWGVC IIEAXO,KEBTBP'}
       name: new_password_txb
       properties: {hide_text: true, placeholder: New Password, role: outlined}
       type: TextBox
-    - layout_properties: {grid_position: 'ZYDEIF,OPWSEO'}
+    - layout_properties: {grid_position: 'ZYDEIF,OPWSEO ZSTLUG,GKLNDH'}
       name: spacer_2
-      properties: {height: 32}
+      properties: {height: 69}
       type: Spacer
+    - layout_properties: {grid_position: 'ZYDEIF,OPWSEO ODNHGH,HHYQJV'}
+      name: tick1_lbl
+      properties: {font_size: 21, foreground: '#5f1725', icon: 'fa:'}
+      type: Label
+    - layout_properties: {grid_position: 'ZYDEIF,OPWSEO NSOLDY,ULHIUF'}
+      name: spacer_5
+      properties: {height: 7}
+      type: Spacer
+    - layout_properties: {grid_position: 'ZYDEIF,OPWSEO IZTRRR,ZYOLIP'}
+      name: tick2_lbl
+      properties: {font_size: 21, foreground: '#174d25', icon: ''}
+      type: Label
     - data_bindings:
       - {code: 'self.item[''confirmed_password'']', property: text, writeback: true}
+      event_bindings: {change: confirmed_password_txb_changed}
       layout_properties: {grid_position: 'ZYDEIF,UCWGVC SJNZKL,JSJEMQ'}
       name: confirmed_password_txb
       properties: {hide_text: true, placeholder: Confirmed New Password, role: outlined, tooltip: Re-enter your new password here}

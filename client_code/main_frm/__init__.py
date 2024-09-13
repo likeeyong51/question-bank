@@ -65,7 +65,7 @@ class main_frm(main_frmTemplate):
       self.user_drp.items = [
         self.item['username'],
         'Switch user',
-        'Change Password',
+        'Change password',
         'Log out'
       ]
 
