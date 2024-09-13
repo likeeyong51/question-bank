@@ -62,7 +62,7 @@ def authenticate_user(username, password, group):
 def update_user_password(user_info):
   # get user record on login credential
   user = app_tables.user_tbl.get(username=user_info['username'], password=user_info['old_password'])
-  print(*user_info)
+  # print(*user_info)
 
   if user: # if user exists
     # update user password

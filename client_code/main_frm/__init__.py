@@ -98,6 +98,7 @@ class main_frm(main_frmTemplate):
       change_key = alert(
         content=password_change_frm(item=self.item),
         title='Change password',
+        large=True,
         buttons=[('Save', True), ('Cancel', False)]
       )
 
@@ -110,8 +111,8 @@ class main_frm(main_frmTemplate):
         # update user password
         if anvil.server.call('update_user_password', self.item):
           # call the change event handler
-          self.user_drp_change()
           Notification('Update password successful. Please log in with your new password').show()
+          self.user_drp_change()
         else:
           # password update fails
           Notification('Error: User not found. Please try again.').show()

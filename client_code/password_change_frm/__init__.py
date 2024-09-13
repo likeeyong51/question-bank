@@ -12,3 +12,7 @@ class password_change_frm(password_change_frmTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+    # reset ui
+    self.old_password_txb.text       = ''
+    self.new_password_txb.text       = ''
+    self.confirmed_password_txb.text = ''
