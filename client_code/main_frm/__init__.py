@@ -105,14 +105,19 @@ class main_frm(main_frmTemplate):
       if not change_key:
         Notification('Change password cancelled').show()
       else:
-        # prompt user to log in with new password
-        self.user_drp.selected_value = 'Switch user'
-
-        # update user password
-        if anvil.server.call('update_user_password', self.item):
-          # call the change event handler
-          Notification('Update password successful. Please log in with your new password').show()
-          self.user_drp_change()
+        # validate for empty strings
+        if 'old_password' in self.item and 'new_password' in self.item and 'confirmed_password' in self.item:
+          # prompt user to log in with new password
+          self.user_drp.selected_value = 'Switch user'
+  
+          # update user password
+          if anvil.server.call('update_user_password', self.item):
+            # call the change event handler
+            Notification('Update password successful. Please log in with your new password').show()
+            self.user_drp_change()
+          else:
+            # password update fails
+            Notification('User not found. Please try again.', title='Mismatch Error').show()
         else:
-          # password update fails
-          Notification('Error: User not found. Please try again.').show()
+          Notification('Invalid passwords', title='Input Error').show()
+          
