@@ -47,6 +47,10 @@ db_schema:
     - admin_ui: {order: 4, width: 200}
       name: mark
       type: number
+    - admin_ui: {order: 5, width: 200}
+      name: Topic
+      target: topic_tbl
+      type: link_single
     server: full
     title: question_tbl
   quiz_question_tbl:

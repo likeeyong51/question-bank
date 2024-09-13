@@ -117,7 +117,7 @@ class main_frm(main_frmTemplate):
             self.user_drp_change()
           else:
             # password update fails
-            Notification('User not found. Please try again.', title='Mismatch Error').show()
+            Notification('User not found. Please try again.', title='Error').show()
         else:
-          Notification('Invalid passwords', title='Input Error').show()
+          Notification('Invalid passwords', title='Error').show()
           
